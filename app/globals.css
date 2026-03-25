@@ -2,32 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 270 10% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 10% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 10% 8%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 20% 96%;
+    --secondary-foreground: 270 10% 20%;
+    --muted: 270 20% 96%;
+    --muted-foreground: 270 8% 48%;
+    --accent: 270 20% 96%;
+    --accent-foreground: 270 10% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 15% 90%;
+    --input: 270 15% 90%;
+    --ring: 270 91% 65%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 270 10% 6%;
+    --foreground: 270 10% 98%;
+    --card: 270 10% 9%;
+    --card-foreground: 270 10% 98%;
+    --popover: 270 10% 9%;
+    --popover-foreground: 270 10% 98%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 10% 15%;
+    --secondary-foreground: 270 10% 90%;
+    --muted: 270 10% 15%;
+    --muted-foreground: 270 8% 55%;
+    --accent: 270 10% 15%;
+    --accent-foreground: 270 10% 90%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 10% 18%;
+    --input: 270 10% 18%;
+    --ring: 270 91% 65%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Print styles for invoice PDF */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .invoice-print {
+    padding: 40px;
+    max-width: 100%;
   }
 }
